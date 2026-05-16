@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- 月份切换 -->
+  <view class="month-header">
+    <view class="month-nav" bindtap="prevMonth">
+      <text class="nav-arrow">‹</text>
+    </view>
+    <text class="month-str">{{monthStr}}</text>
+    <view class="month-nav" bindtap="nextMonth">
+      <text class="nav-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 星期标题 -->
+  <view class="weekday-row">
+    <text class="weekday" wx:for="{{['日', '一', '二', '三', '四', '五', '六']}}" wx:key="index">{{item}}</text>
+  </view>
+
+  <!-- 日历网格 -->
+  <view class="calendar-grid">
+    <view
+      wx:for="{{calendarDays}}"
+      wx:key="index"
+      class="day-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}}"
+      data-date="{{item.dateStr}}"
+      bindtap="onDayTap"
+    >
+      <text class="day-num">{{item.day}}</text>
+      <view class="day-indicator" wx:if="{{item.hasContent}}"></view>
+      <text class="lunar-day" wx:if="{{item.lunarDay}}">{{item.lunarDay}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,226 @@
+/* pages/settings/settings.wxss - 设定页面 */
+
+.page {
+  min-height: 100vh;
+  background-color: #F7F4EE;
+  display: flex;
+  flex-direction: column;
+  padding: 0 48rpx;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: 200rpx;
+  box-sizing: border-box;
+}
+
+.page-header {
+  padding: 64rpx 0 48rpx 0;
+}
+
+.page-title {
+  font-size: 40rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+}
+
+.settings-list {
+  flex: 1;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 0;
+  border-bottom: 1rpx solid #E8E6E0;
+}
+
+.setting-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.setting-label {
+  font-size: 30rpx;
+  color: #1C1C1C;
+}
+
+.setting-desc {
+  font-size: 24rpx;
+  color: #8B8B8B;
+}
+
+.setting-value {
+  font-size: 28rpx;
+  color: #8B8B8B;
+}
+
+/* Toggle 开关 */
+.toggle {
+  width: 96rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-track {
+  width: 96rpx;
+  height: 56rpx;
+  background-color: #D0CCC2;
+  border-radius: 28rpx;
+  padding: 4rpx;
+  transition: background-color 0.3s ease;
+}
+
+.toggle.on .toggle-track {
+  background-color: #1C1C1C;
+}
+
+.toggle-thumb {
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  transition: transform 0.3s ease;
+}
+
+.toggle.on .toggle-thumb {
+  transform: translateX(40rpx);
+}
+
+/* 字体选项 */
+.font-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.font-option {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #E8E6E0;
+  border-radius: 12rpx;
+  transition: all 0.2s ease;
+}
+
+.font-option.active {
+  border-color: #1C1C1C;
+  background-color: #1C1C1C;
+}
+
+.font-option.active .font-serif,
+.font-option.active .font-sans {
+  color: #F7F4EE;
+}
+
+.font-serif {
+  font-size: 32rpx;
+  color: #1C1C1C;
+  font-family: 'Songti SC', 'STSong', serif;
+}
+
+.font-sans {
+  font-size: 32rpx;
+  color: #1C1C1C;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+}
+
+/* 关于 */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64rpx 0;
+  gap: 8rpx;
+}
+
+.about-text {
+  font-size: 24rpx;
+  color: #1C1C1C;
+  letter-spacing: 4rpx;
+}
+
+.about-version {
+  font-size: 20rpx;
+  color: #BDBDBD;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 64rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  background-color: #F7F4EE;
+}
+
+.nav-item {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.nav-item.active {
+  opacity: 1;
+}
+
+.calendar-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.calendar-icon::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20rpx;
+  height: 8rpx;
+  border: 2rpx solid #1C1C1C;
+  border-bottom: none;
+  border-radius: 4rpx 4rpx 0 0;
+}
+
+.settings-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 50%;
+  position: relative;
+}
+
+.settings-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #1C1C1C;
+  border-radius: 50%;
+}
+
+.settings-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rpx;
+  height: 16rpx;
+  background-color: #1C1C1C;
+  border-radius: 2rpx;
+}

@@ -1,0 +1,92 @@
+<view class="page">
+  <!-- 标题 -->
+  <view class="page-header">
+    <text class="page-title">设定</text>
+  </view>
+
+  <!-- 设置列表 -->
+  <view class="settings-list">
+    <!-- 深色模式 -->
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-label">深色模式</text>
+        <text class="setting-desc">切换至深色界面</text>
+      </view>
+      <view
+        class="toggle {{darkMode ? 'on' : ''}}"
+        bindtap="toggleDarkMode"
+      >
+        <view class="toggle-track">
+          <view class="toggle-thumb"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 声音 -->
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-label">声音</text>
+        <text class="setting-desc">开启操作提示音</text>
+      </view>
+      <view
+        class="toggle {{soundEnabled ? 'on' : ''}}"
+        bindtap="toggleSound"
+      >
+        <view class="toggle-track">
+          <view class="toggle-thumb"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 字体 -->
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-label">字体</text>
+        <text class="setting-desc">选择界面字体风格</text>
+      </view>
+      <view class="font-options">
+        <view
+          class="font-option {{fontStyle === 'serif' ? 'active' : ''}}"
+          data-font="serif"
+          bindtap="selectFont"
+        >
+          <text class="font-serif">宋</text>
+        </view>
+        <view
+          class="font-option {{fontStyle === 'sans' ? 'active' : ''}}"
+          data-font="sans"
+          bindtap="selectFont"
+        >
+          <text class="font-sans">黑</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 语言 -->
+    <view class="setting-item">
+      <view class="setting-info">
+        <text class="setting-label">语言</text>
+        <text class="setting-desc">简体中文</text>
+      </view>
+      <view class="setting-value">
+        <text>繁</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="about-section">
+    <text class="about-text">二字·六爻</text>
+    <text class="about-version">v1.0.0</text>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goToCalendar">
+      <view class="calendar-icon"></view>
+    </view>
+    <view class="nav-item active">
+      <view class="settings-icon"></view>
+    </view>
+  </view>
+</view>

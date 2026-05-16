@@ -1,0 +1,40 @@
+/** 全局样式 - 二字·六爻 **/
+
+/* 页面基础设置 */
+page {
+  background-color: #F5F0E8;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+  color: #2C2C2C;
+  font-size: 28rpx;
+  line-height: 1.6;
+  width: 750rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 安全区域 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 通用按钮样式 */
+.btn-primary {
+  background-color: #C94043;
+  color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 页面容器 */
+.container {
+  min-height: 100vh;
+  padding: 0 40rpx;
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,100 @@
+/* pages/history/history.wxss */
+
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+  background-color: #F5F0E8;
+}
+
+/* 月份切换 */
+.month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+
+.month-nav {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow {
+  font-size: 48rpx;
+  color: #9B9688;
+  font-weight: 300;
+}
+
+.month-str {
+  font-size: 36rpx;
+  color: #2C2C2C;
+  font-weight: 600;
+}
+
+/* 星期标题 */
+.weekday-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  padding: 0 10rpx;
+}
+
+.weekday {
+  width: 90rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #9B9688;
+}
+
+/* 日历网格 */
+.calendar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.day-cell {
+  width: 90rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.day-cell.empty {
+  visibility: hidden;
+}
+
+.day-num {
+  font-size: 32rpx;
+  color: #2C2C2C;
+  margin-bottom: 8rpx;
+}
+
+.day-cell.today .day-num {
+  color: #C94043;
+  font-weight: 600;
+}
+
+.day-indicator {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+  background-color: #C94043;
+  position: absolute;
+  bottom: 40rpx;
+}
+
+.lunar-day {
+  font-size: 20rpx;
+  color: #9B9688;
+  position: absolute;
+  bottom: 16rpx;
+}

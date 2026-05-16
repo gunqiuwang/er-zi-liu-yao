@@ -1,0 +1,47 @@
+<view class="page">
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goToCalendar">
+    <text class="back-arrow">‹</text>
+  </view>
+
+  <!-- 日期 -->
+  <view class="date-header">
+    <text class="solar-date">{{dateStr}}</text>
+    <text class="lunar-date">{{lunarDateStr}}</text>
+  </view>
+
+  <!-- 二字展示 -->
+  <view class="chars-section" wx:if="{{entry}}">
+    <text class="char-left">「</text>
+    <text class="chars">{{entry.chars}}</text>
+    <text class="char-right">」</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-section" wx:else>
+    <text class="empty-text">留白</text>
+  </view>
+
+  <!-- 卦象 -->
+  <view class="hexagram-section" wx:if="{{entry && entry.hexagram}}">
+    <text class="hexagram-symbol">{{entry.hexagram.symbol}}</text>
+    <text class="hexagram-name">{{entry.hexagram.name}}</text>
+    <text class="hexagram-title">{{entry.hexagram.title}}</text>
+    <text class="hexagram-text">{{entry.hexagram.text}}</text>
+  </view>
+
+  <!-- 操作 -->
+  <view class="actions" wx:if="{{entry}}">
+    <view class="action-btn delete" bindtap="onDelete">删除</view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goToCalendar">
+      <view class="calendar-icon"></view>
+    </view>
+    <view class="nav-item" bindtap="goToSettings">
+      <view class="settings-icon"></view>
+    </view>
+  </view>
+</view>

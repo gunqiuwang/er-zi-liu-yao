@@ -1,0 +1,116 @@
+<view class="page">
+  <!-- 顶部日期区 -->
+  <view class="date-header">
+    <text class="lunar-date">{{lunarYearStr}} · {{lunarSeasonStr}} · {{lunarDayStr}}</text>
+    <view class="today-mark" wx:if="{{isToday}}">今日</view>
+  </view>
+
+  <!-- 二字展示区 -->
+  <view class="chars-section" bindtap="onCharsTap">
+    <text class="char-left">「</text>
+    <text class="chars {{chars ? '' : 'empty'}}">{{chars || '微雨'}}</text>
+    <text class="char-right">」</text>
+  </view>
+
+  <!-- 铜钱按钮 -->
+  <view class="coin-section" bindtap="onCoinTap">
+    <view class="coin {{showHexagram ? 'rotating' : ''}}">
+      <view class="coin-hole"></view>
+    </view>
+  </view>
+
+  <!-- 分享按钮 -->
+  <view class="share-section" bindtap="onShareTap">
+    <view class="share-icon"></view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goToCalendar">
+      <view class="calendar-icon"></view>
+    </view>
+    <view class="nav-item" bindtap="goToSettings">
+      <view class="settings-icon"></view>
+    </view>
+  </view>
+
+  <!-- 输入弹窗 -->
+  <view class="input-modal {{showInput ? 'show' : ''}}" wx:if="{{showInput}}">
+    <view class="input-bg" bindtap="onInputClose"></view>
+    <view class="input-card">
+      <view class="input-header">
+        <text class="input-title">今日二字</text>
+      </view>
+      <view class="input-field">
+        <text class="input-bracket left">「</text>
+        <input
+          class="input-box"
+          placeholder="输入两个字"
+          maxlength="2"
+          value="{{inputChars}}"
+          bindinput="onInputChange"
+          focus="{{showInput}}"
+        />
+        <text class="input-bracket right">」</text>
+      </view>
+      <view class="input-hint">最多输入两个汉字</view>
+      <view class="input-actions">
+        <view class="input-btn cancel" bindtap="onInputClose">取消</view>
+        <view class="input-btn confirm" bindtap="onSaveChars">保存</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 卦象展开区域 -->
+  <view class="hexagram-panel {{showHexagram ? 'show' : ''}}" wx:if="{{showHexagram}}">
+    <view class="hexagram-bg" bindtap="onCloseHexagram"></view>
+    <view class="hexagram-content">
+      <text class="hexagram-symbol">{{hexagram.symbol}}</text>
+      <text class="hexagram-name">{{hexagram.name}}</text>
+      <text class="hexagram-title">{{hexagram.title}}</text>
+
+      <!-- 爻列表 -->
+      <view class="hexagram-lines">
+        <view
+          wx:for="{{hexagramLines}}"
+          wx:key="index"
+          class="line-item show"
+        >
+          <text class="line-yao">{{index === 0 ? '初' : index === 5 ? '上' : index}}</text>
+          <view class="line-shape">
+            <view class="{{item.yang ? 'yang-line' : 'yin-line'}}"></view>
+          </view>
+          <view class="line-changing" wx:if="{{item.changing}}"></view>
+        </view>
+      </view>
+
+      <text class="hexagram-text">{{hexagram.text}}</text>
+      <view class="close-hint" bindtap="onCloseHexagram">点击关闭</view>
+    </view>
+  </view>
+
+  <!-- 分享弹窗 -->
+  <view class="share-modal {{showShareModal ? 'show' : ''}}" wx:if="{{showShareModal}}">
+    <view class="share-bg" bindtap="onCloseShare"></view>
+    <view class="share-card">
+      <view class="share-card-header">
+        <text class="share-date">{{lunarYearStr}} {{lunarSeasonStr}}{{lunarDayStr}}</text>
+      </view>
+      <view class="share-chars">
+        <text class="share-char-left">「</text>
+        <text class="share-char">{{chars}}</text>
+        <text class="share-char-right">」</text>
+      </view>
+      <text class="share-hexagram-symbol">{{hexagram.symbol}}</text>
+      <text class="share-hexagram-title">{{hexagram.title}}</text>
+      <text class="share-hexagram-text">{{hexagram.text}}</text>
+      <view class="share-card-footer">
+        <text class="share-watermark">二字·六爻</text>
+      </view>
+    </view>
+    <view class="share-actions">
+      <button class="share-btn" bindtap="saveToAlbum">保存到相册</button>
+      <button class="share-btn cancel" bindtap="onCloseShare">取消</button>
+    </view>
+  </view>
+</view>

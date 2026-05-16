@@ -1,0 +1,209 @@
+/* pages/detail/detail.wxss - 详情页 */
+
+.page {
+  min-height: 100vh;
+  background-color: #F7F4EE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 48rpx;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: 200rpx;
+  box-sizing: border-box;
+}
+
+.back-btn {
+  width: 100%;
+  padding: 32rpx 0;
+}
+
+.back-arrow {
+  font-size: 48rpx;
+  color: #8B8B8B;
+  font-weight: 300;
+}
+
+.date-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 64rpx;
+}
+
+.solar-date {
+  font-size: 28rpx;
+  color: #8B8B8B;
+}
+
+.lunar-date {
+  font-size: 24rpx;
+  color: #BDBDBD;
+}
+
+.chars-section {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 64rpx;
+}
+
+.char-left, .char-right {
+  font-size: 48rpx;
+  color: #E0DDD5;
+  font-weight: 200;
+}
+
+.chars {
+  font-size: 160rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+  letter-spacing: 24rpx;
+}
+
+.empty-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-text {
+  font-size: 48rpx;
+  color: #D0CCC2;
+  letter-spacing: 8rpx;
+}
+
+.hexagram-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+  border-top: 1rpx solid #E8E6E0;
+  border-bottom: 1rpx solid #E8E6E0;
+  width: 100%;
+  margin-bottom: 48rpx;
+}
+
+.hexagram-symbol {
+  font-size: 160rpx;
+  color: #1C1C1C;
+  margin-bottom: 24rpx;
+}
+
+.hexagram-name {
+  font-size: 56rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.hexagram-title {
+  font-size: 28rpx;
+  color: #8B8B8B;
+  margin-bottom: 32rpx;
+}
+
+.hexagram-text {
+  font-size: 26rpx;
+  color: #8B8B8B;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 600rpx;
+}
+
+.actions {
+  display: flex;
+  gap: 24rpx;
+}
+
+.action-btn {
+  padding: 24rpx 64rpx;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+}
+
+.action-btn.delete {
+  background-color: transparent;
+  color: #8B8B8B;
+  border: 1rpx solid #D0CCC2;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 64rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  background-color: #F7F4EE;
+}
+
+.nav-item {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.nav-item.active {
+  opacity: 1;
+}
+
+.calendar-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.calendar-icon::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20rpx;
+  height: 8rpx;
+  border: 2rpx solid #1C1C1C;
+  border-bottom: none;
+  border-radius: 4rpx 4rpx 0 0;
+}
+
+.settings-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 50%;
+  position: relative;
+}
+
+.settings-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #1C1C1C;
+  border-radius: 50%;
+}
+
+.settings-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rpx;
+  height: 16rpx;
+  background-color: #1C1C1C;
+  border-radius: 2rpx;
+}

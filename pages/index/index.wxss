@@ -1,0 +1,599 @@
+/* pages/index/index.wxss - 东方极简风格 */
+
+.page {
+  min-height: 100vh;
+  background-color: #F7F4EE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 48rpx;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 顶部日期区 */
+.date-header {
+  display: flex;
+  align-items: center;
+  margin-top: 64rpx;
+  gap: 24rpx;
+}
+
+.lunar-date {
+  font-size: 28rpx;
+  color: #8B8B8B;
+  letter-spacing: 4rpx;
+  font-weight: 300;
+}
+
+.today-mark {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  background-color: #9F2D20;
+  padding: 6rpx 16rpx;
+  border-radius: 4rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 二字展示区 */
+.chars-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  min-height: 400rpx;
+}
+
+.char-left, .char-right {
+  font-size: 48rpx;
+  color: #E0DDD5;
+  font-weight: 200;
+}
+
+.chars {
+  font-size: 160rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+  letter-spacing: 24rpx;
+  transition: all 0.4s ease-out;
+}
+
+.chars.empty {
+  color: #E0DDD5;
+}
+
+/* 铜钱按钮 */
+.coin-section {
+  padding: 48rpx 0;
+}
+
+.coin {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #9B7B4F, #5B4630);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+  position: relative;
+  transition: transform 0.3s ease-out;
+}
+
+.coin::before {
+  content: '';
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 1rpx solid rgba(0, 0, 0, 0.04);
+}
+
+.coin.rotating {
+  animation: coinRotate 0.6s ease-out;
+}
+
+@keyframes coinRotate {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.coin-hole {
+  width: 28rpx;
+  height: 28rpx;
+  background-color: #F7F4EE;
+  border-radius: 4rpx;
+}
+
+/* 分享按钮 */
+.share-section {
+  padding: 32rpx 0;
+}
+
+.share-icon {
+  width: 48rpx;
+  height: 48rpx;
+  border: 2rpx solid #8B8B8B;
+  border-radius: 50%;
+  position: relative;
+}
+
+.share-icon::before {
+  content: '';
+  position: absolute;
+  top: -16rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 16rpx;
+  background-color: #8B8B8B;
+}
+
+.share-icon::after {
+  content: '';
+  position: absolute;
+  top: 4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20rpx;
+  height: 20rpx;
+  border: 2rpx solid #8B8B8B;
+  border-radius: 50%;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 64rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  background-color: #F7F4EE;
+}
+
+.nav-item {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.nav-item.active {
+  opacity: 1;
+}
+
+.calendar-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.calendar-icon::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20rpx;
+  height: 8rpx;
+  border: 2rpx solid #1C1C1C;
+  border-bottom: none;
+  border-radius: 4rpx 4rpx 0 0;
+}
+
+.settings-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #1C1C1C;
+  border-radius: 50%;
+  position: relative;
+}
+
+.settings-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #1C1C1C;
+  border-radius: 50%;
+}
+
+.settings-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4rpx;
+  height: 16rpx;
+  background-color: #1C1C1C;
+  border-radius: 2rpx;
+}
+
+/* 输入弹窗 */
+.input-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.input-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.input-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input-card {
+  position: relative;
+  z-index: 1;
+  width: 600rpx;
+  background-color: #F7F4EE;
+  border-radius: 24rpx;
+  padding: 48rpx;
+}
+
+.input-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.input-title {
+  font-size: 32rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.input-bracket {
+  font-size: 48rpx;
+  color: #D0CCC2;
+  font-weight: 200;
+}
+
+.input-box {
+  width: 280rpx;
+  height: 120rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  font-size: 64rpx;
+  text-align: center;
+  letter-spacing: 16rpx;
+}
+
+.input-hint {
+  text-align: center;
+  font-size: 22rpx;
+  color: #BDBDBD;
+  margin-bottom: 40rpx;
+}
+
+.input-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.input-btn {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+}
+
+.input-btn.cancel {
+  background-color: transparent;
+  color: #8B8B8B;
+}
+
+.input-btn.confirm {
+  background-color: #1C1C1C;
+  color: #F7F4EE;
+}
+
+/* 卦象展开面板 */
+.hexagram-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out;
+}
+
+.hexagram-panel.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hexagram-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(247, 244, 238, 0.95);
+}
+
+.hexagram-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64rpx;
+}
+
+.hexagram-symbol {
+  font-size: 200rpx;
+  color: #1C1C1C;
+  margin-bottom: 32rpx;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease-out;
+}
+
+.hexagram-panel.show .hexagram-symbol {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hexagram-name {
+  font-size: 64rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.hexagram-title {
+  font-size: 28rpx;
+  color: #8B8B8B;
+  margin-bottom: 48rpx;
+}
+
+.hexagram-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-bottom: 48rpx;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  opacity: 0;
+  transform: translateY(20rpx);
+  transition: all 0.4s ease-out;
+}
+
+.line-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.line-yao {
+  font-size: 24rpx;
+  color: #8B8B8B;
+  width: 48rpx;
+  text-align: right;
+}
+
+.line-shape {
+  width: 120rpx;
+  height: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.yang-line {
+  width: 120rpx;
+  height: 8rpx;
+  background-color: #1C1C1C;
+  border-radius: 4rpx;
+}
+
+.yin-line {
+  width: 120rpx;
+  height: 8rpx;
+  background: linear-gradient(to right, #1C1C1C 0%, #1C1C1C 45%, transparent 45%, transparent 55%, #1C1C1C 55%, #1C1C1C 100%);
+  border-radius: 4rpx;
+}
+
+.line-changing .yang-line,
+.line-changing .yin-line {
+  background-color: #9F2D20;
+}
+
+.hexagram-text {
+  font-size: 26rpx;
+  color: #8B8B8B;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 500rpx;
+}
+
+.close-hint {
+  margin-top: 64rpx;
+  font-size: 22rpx;
+  color: #BDBDBD;
+  letter-spacing: 2rpx;
+}
+
+/* 分享弹窗 */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.share-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.share-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.share-card {
+  width: 600rpx;
+  background-color: #F7F4EE;
+  padding: 64rpx 48rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.share-card-header {
+  text-align: center;
+  margin-bottom: 48rpx;
+}
+
+.share-date {
+  font-size: 24rpx;
+  color: #8B8B8B;
+  letter-spacing: 4rpx;
+}
+
+.share-chars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  margin-bottom: 48rpx;
+}
+
+.share-char-left, .share-char-right {
+  font-size: 36rpx;
+  color: #E0DDD5;
+}
+
+.share-char {
+  font-size: 80rpx;
+  color: #1C1C1C;
+  font-weight: 600;
+  letter-spacing: 16rpx;
+}
+
+.share-hexagram-symbol {
+  display: block;
+  text-align: center;
+  font-size: 120rpx;
+  color: #1C1C1C;
+  margin-bottom: 16rpx;
+}
+
+.share-hexagram-title {
+  display: block;
+  text-align: center;
+  font-size: 28rpx;
+  color: #1C1C1C;
+  margin-bottom: 32rpx;
+}
+
+.share-hexagram-text {
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8B8B8B;
+  line-height: 1.8;
+}
+
+.share-card-footer {
+  margin-top: 48rpx;
+  text-align: center;
+}
+
+.share-watermark {
+  font-size: 20rpx;
+  color: #D0CCC2;
+  letter-spacing: 4rpx;
+}
+
+.share-actions {
+  position: relative;
+  z-index: 1;
+  margin-top: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  width: 600rpx;
+}
+
+.share-btn {
+  background-color: #1C1C1C;
+  color: #F7F4EE;
+  font-size: 28rpx;
+  padding: 24rpx 48rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+
+.share-btn.cancel {
+  background-color: transparent;
+  color: #8B8B8B;
+}
+
+.share-btn::after {
+  border: none;
+}

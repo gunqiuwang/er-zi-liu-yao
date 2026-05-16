@@ -1,0 +1,74 @@
+<view class="page">
+  <!-- 年份标题 -->
+  <view class="year-header">
+    <text class="year-title">{{yearMonths.length > 0 ? currentYear + '年' : ''}}</text>
+  </view>
+
+  <!-- 月份网格 -->
+  <scroll-view class="year-grid" scroll-y="true">
+    <view class="months-container">
+      <view
+        wx:for="{{yearMonths}}"
+        wx:for-index="mIdx"
+        wx:key="month"
+        class="month-block"
+      >
+        <view class="month-title">{{item.monthName}}</view>
+        <view class="month-grid">
+          <view
+            wx:for="{{item.days}}"
+            wx:for-index="dIdx"
+            wx:key="index"
+            class="day-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}} {{item.hasEntry ? 'has-entry' : ''}}"
+            data-date="{{item.dateStr}}"
+            data-entry="{{item.entry}}"
+            bindtap="onDayTap"
+          >
+            <view wx:if="{{!item.empty}}" class="day-content">
+              <text class="day-num">{{item.day}}</text>
+              <view class="entry-dot" wx:if="{{item.hasEntry}}"></view>
+              <text class="lunar-day" wx:if="{{item.lunarDay === '初一'}}">{{item.lunarMonth}}</text>
+              <text class="lunar-day" wx:elif="{{item.lunarDay}}">{{item.lunarDay}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-item active">
+      <view class="calendar-icon"></view>
+    </view>
+    <view class="nav-item" bindtap="goToSettings">
+      <view class="settings-icon"></view>
+    </view>
+  </view>
+
+  <!-- 日期详情弹窗 -->
+  <view class="detail-modal {{selectedDate ? 'show' : ''}}" wx:if="{{selectedDate}}">
+    <view class="detail-bg" bindtap="onCloseDetail"></view>
+    <view class="detail-card">
+      <view class="detail-date">{{selectedDate}}</view>
+
+      <view class="detail-chars" wx:if="{{selectedEntry}}">
+        <text class="char-left">「</text>
+        <text class="detail-char">{{selectedEntry.chars}}</text>
+        <text class="char-right">」</text>
+      </view>
+
+      <view class="detail-hexagram" wx:if="{{selectedEntry && selectedEntry.hexagram}}">
+        <text class="hexagram-symbol">{{selectedEntry.hexagram.symbol}}</text>
+        <text class="hexagram-name">{{selectedEntry.hexagram.name}}</text>
+        <text class="hexagram-title">{{selectedEntry.hexagram.title}}</text>
+        <text class="hexagram-text">{{selectedEntry.hexagram.text}}</text>
+      </view>
+
+      <view class="detail-actions">
+        <view class="action-btn" bindtap="goToWrite">去书写</view>
+        <view class="action-btn close" bindtap="onCloseDetail">关闭</view>
+      </view>
+    </view>
+  </view>
+</view>
