@@ -1,4 +1,4 @@
-/* pages/calendar/calendar.wxss - 卦历页面 v2 */
+/* pages/calendar/calendar.wxss - 卦历页面 v3 */
 
 .page {
   min-height: 100vh;
@@ -9,6 +9,7 @@
   padding-top: env(safe-area-inset-top);
   padding-bottom: 160rpx;
   box-sizing: border-box;
+  font-family: 'LXGW WenKai', 'Songti SC', serif;
 }
 
 .year-header {
@@ -130,78 +131,82 @@
 }
 
 .nav-item {
-  width: 72rpx;
-  height: 72rpx;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 8rpx;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
 .nav-item.active {
   opacity: 1;
 }
 
-.calendar-icon {
-  width: 44rpx;
-  height: 44rpx;
+.nav-item:active {
+  opacity: 0.75;
+}
+
+.nav-icon {
+  width: 48rpx;
+  height: 48rpx;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-label {
+  font-size: 16rpx;
+  color: #6A6A6A;
+  letter-spacing: 2rpx;
+}
+
+/* 日历 icon */
+.calendar-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 8rpx;
+  position: absolute;
+  opacity: 0.7;
 }
 
 .calendar-icon::before {
   content: '';
   position: absolute;
-  width: 38rpx;
-  height: 34rpx;
-  border: 1.5px solid #4A4A4A;
-  border-radius: 6rpx;
-  top: 4rpx;
-  left: 3rpx;
-  box-sizing: border-box;
-}
-
-.calendar-icon::after {
-  content: '';
-  position: absolute;
-  width: 10rpx;
-  height: 6rpx;
+  width: 8rpx;
+  height: 8rpx;
   border: 1.5px solid #4A4A4A;
   border-bottom: none;
   border-radius: 3rpx 3rpx 0 0;
-  top: 0rpx;
+  top: -5rpx;
   left: 50%;
   transform: translateX(-50%);
-  box-sizing: border-box;
+  opacity: 0.7;
 }
 
+/* 设置 icon */
 .settings-icon {
-  width: 44rpx;
-  height: 44rpx;
-  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.7;
 }
 
 .settings-icon::before {
   content: '';
   position: absolute;
-  width: 12rpx;
-  height: 12rpx;
+  width: 8rpx;
+  height: 8rpx;
   background-color: #4A4A4A;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.settings-icon::after {
-  content: '';
-  position: absolute;
-  width: 34rpx;
-  height: 34rpx;
-  border: 1.5px solid #4A4A4A;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
+  opacity: 0.7;
 }
 
 /* 详情弹窗 */
@@ -271,6 +276,7 @@
   color: #1C1C1C;
   font-weight: 600;
   letter-spacing: 12rpx;
+  font-family: 'LXGW WenKai', serif;
 }
 
 .detail-hexagram {

@@ -12,30 +12,36 @@
     <text class="char-right">」</text>
   </view>
 
-  <!-- 铜钱 -->
-  <view class="coin-section" bindtap="onCoinTap">
-    <view class="coin {{coinTouched ? 'touched' : ''}}">
-      <view class="coin-hole"></view>
+  <!-- 功能按钮组 -->
+  <view class="action-group">
+    <!-- 铜钱 -->
+    <view class="coin-wrapper" bindtap="onCoinTap">
+      <view class="coin {{coinTouched ? 'touched' : ''}}">
+        <view class="coin-hole"></view>
+      </view>
+      <text class="coin-label">起卦</text>
     </view>
-  </view>
 
-  <!-- 分享 icon -->
-  <view class="share-section" bindtap="onShareTap">
-    <view class="share-icon"></view>
+    <!-- 分享 -->
+    <view class="share-wrapper" bindtap="onShareTap">
+      <view class="share-icon"></view>
+      <text class="share-label">分享</text>
+    </view>
   </view>
 
   <!-- 底部导航 -->
   <view class="bottom-nav">
     <view class="nav-item" bindtap="goToCalendar">
-      <view class="calendar-icon">
-        <view class="calendar-body"></view>
-        <view class="calendar-top"></view>
+      <view class="nav-icon">
+        <view class="calendar-icon"></view>
       </view>
+      <text class="nav-label">卦历</text>
     </view>
     <view class="nav-item" bindtap="goToSettings">
-      <view class="settings-icon">
-        <view class="gear-center"></view>
+      <view class="nav-icon">
+        <view class="settings-icon"></view>
       </view>
+      <text class="nav-label">设定</text>
     </view>
   </view>
 

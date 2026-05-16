@@ -1,10 +1,25 @@
 /** 全局样式 - 二字·六爻 **/
 
+/* 字体引入 */
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/LXGW wenkai-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/LXGW wenkai-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* 页面基础设置 */
 page {
-  background-color: #F5F0E8;
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
-  color: #2C2C2C;
+  background-color: #F7F4EE;
+  font-family: 'LXGW WenKai', 'Songti SC', 'STSong', serif;
+  color: #1C1C1C;
   font-size: 28rpx;
   line-height: 1.6;
   width: 750rpx;
@@ -19,12 +34,13 @@ page {
 
 /* 通用按钮样式 */
 .btn-primary {
-  background-color: #C94043;
+  background-color: #9F2D20;
   color: #FFFFFF;
-  border-radius: 16rpx;
+  border-radius: 8rpx;
   padding: 24rpx 48rpx;
-  font-size: 32rpx;
+  font-size: 28rpx;
   border: none;
+  font-family: 'LXGW WenKai', serif;
 }
 
 .btn-primary::after {
@@ -34,7 +50,7 @@ page {
 /* 页面容器 */
 .container {
   min-height: 100vh;
-  padding: 0 40rpx;
+  padding: 0 48rpx;
   padding-bottom: 120rpx;
   box-sizing: border-box;
 }
