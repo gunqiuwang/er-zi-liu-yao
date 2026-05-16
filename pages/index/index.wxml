@@ -1,25 +1,25 @@
 <view class="page">
-  <!-- 顶部日期区 -->
+  <!-- 顶部日期 -->
   <view class="date-header">
     <text class="lunar-date">{{lunarYearStr}} · {{lunarSeasonStr}} · {{lunarDayStr}}</text>
     <view class="today-mark" wx:if="{{isToday}}">今日</view>
   </view>
 
-  <!-- 二字展示区 -->
+  <!-- 二字展示 -->
   <view class="chars-section" bindtap="onCharsTap">
     <text class="char-left">「</text>
     <text class="chars {{chars ? '' : 'empty'}}">{{chars || '微雨'}}</text>
     <text class="char-right">」</text>
   </view>
 
-  <!-- 铜钱按钮 -->
+  <!-- 铜钱 -->
   <view class="coin-section" bindtap="onCoinTap">
-    <view class="coin {{showHexagram ? 'rotating' : ''}}">
+    <view class="coin {{coinTouched ? 'touched' : ''}}">
       <view class="coin-hole"></view>
     </view>
   </view>
 
-  <!-- 分享按钮 -->
+  <!-- 分享 icon -->
   <view class="share-section" bindtap="onShareTap">
     <view class="share-icon"></view>
   </view>
@@ -27,10 +27,15 @@
   <!-- 底部导航 -->
   <view class="bottom-nav">
     <view class="nav-item" bindtap="goToCalendar">
-      <view class="calendar-icon"></view>
+      <view class="calendar-icon">
+        <view class="calendar-body"></view>
+        <view class="calendar-top"></view>
+      </view>
     </view>
     <view class="nav-item" bindtap="goToSettings">
-      <view class="settings-icon"></view>
+      <view class="settings-icon">
+        <view class="gear-center"></view>
+      </view>
     </view>
   </view>
 
@@ -45,7 +50,7 @@
         <text class="input-bracket left">「</text>
         <input
           class="input-box"
-          placeholder="输入两个字"
+          placeholder="输入"
           maxlength="2"
           value="{{inputChars}}"
           bindinput="onInputChange"
@@ -53,7 +58,7 @@
         />
         <text class="input-bracket right">」</text>
       </view>
-      <view class="input-hint">最多输入两个汉字</view>
+      <view class="input-hint">两个字</view>
       <view class="input-actions">
         <view class="input-btn cancel" bindtap="onInputClose">取消</view>
         <view class="input-btn confirm" bindtap="onSaveChars">保存</view>
@@ -61,7 +66,7 @@
     </view>
   </view>
 
-  <!-- 卦象展开区域 -->
+  <!-- 卦象面板 -->
   <view class="hexagram-panel {{showHexagram ? 'show' : ''}}" wx:if="{{showHexagram}}">
     <view class="hexagram-bg" bindtap="onCloseHexagram"></view>
     <view class="hexagram-content">
@@ -69,7 +74,6 @@
       <text class="hexagram-name">{{hexagram.name}}</text>
       <text class="hexagram-title">{{hexagram.title}}</text>
 
-      <!-- 爻列表 -->
       <view class="hexagram-lines">
         <view
           wx:for="{{hexagramLines}}"
@@ -80,7 +84,6 @@
           <view class="line-shape">
             <view class="{{item.yang ? 'yang-line' : 'yin-line'}}"></view>
           </view>
-          <view class="line-changing" wx:if="{{item.changing}}"></view>
         </view>
       </view>
 
@@ -89,7 +92,7 @@
     </view>
   </view>
 
-  <!-- 分享弹窗 -->
+  <!-- 分享卡 -->
   <view class="share-modal {{showShareModal ? 'show' : ''}}" wx:if="{{showShareModal}}">
     <view class="share-bg" bindtap="onCloseShare"></view>
     <view class="share-card">

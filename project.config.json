@@ -28,7 +28,17 @@
     "disableUseStrict": false,
     "minifyWXML": true,
     "showOptionMenu": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": false,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "3.0.0",
@@ -72,5 +82,7 @@
     }
   },
   "srcMiniprogramRoot": "miniprogram/",
-  "serverless": false
+  "serverless": false,
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {}
 }

@@ -13,11 +13,11 @@ Page({
     chars: '',
     showInput: false,
     inputChars: '',
+    coinTouched: false,
     showHexagram: false,
     hexagram: null,
     hexagramLines: [],
-    showShareModal: false,
-    shareImage: null
+    showShareModal: false
   },
 
   onLoad() {
@@ -38,10 +38,8 @@ Page({
       dateStr: `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
     });
 
-    // 农历信息
     const lunarInfo = lunar.solarToLunar(year, month, day);
 
-    // 天干地支（简化计算）
     const tiangan = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
     const dizhi = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
     const yearOffset = (year - 1900 + 40) % 10;
@@ -49,7 +47,6 @@ Page({
     const yearTiangan = tiangan[yearOffset];
     const yearDizhi = dizhi[zhiOffset];
 
-    // 季节
     const seasons = ['孟春', '仲春', '暮春', '孟夏', '仲夏', '暮夏', '孟秋', '仲秋', '暮秋', '孟冬', '仲冬', '暮冬'];
     const monthSeason = seasons[(lunarInfo.month - 1) * 3 + Math.floor((lunarInfo.day - 1) / 10)];
 
@@ -81,10 +78,7 @@ Page({
 
   onInputChange(e) {
     const value = e.detail.value;
-    if (value.length > 2) {
-      wx.showToast({ title: '最多两个字', icon: 'none' });
-      return;
-    }
+    if (value.length > 2) return;
     this.setData({ inputChars: value });
   },
 
@@ -114,10 +108,8 @@ Page({
       return;
     }
 
-    // 生成卦象
     const hexagram = yijing.generateHexagram(this.data.dateStr, this.data.chars);
 
-    // 保存卦象到条目
     const entry = storage.getDiary(this.data.dateStr);
     if (entry) {
       entry.hexagram = hexagram;
@@ -125,6 +117,7 @@ Page({
     }
 
     this.setData({
+      coinTouched: true,
       showHexagram: true,
       hexagram: hexagram,
       hexagramLines: []
@@ -132,15 +125,18 @@ Page({
 
     wx.vibrateShort({ success: true });
 
-    // 逐爻显示动画
-    let delay = 800;
+    setTimeout(() => {
+      this.setData({ coinTouched: false });
+    }, 500);
+
+    let delay = 600;
     for (let i = 0; i < 6; i++) {
       setTimeout(() => {
         const lines = [...this.data.hexagramLines];
         lines.push(hexagram.lines[i]);
         this.setData({ hexagramLines: lines });
       }, delay);
-      delay += 600;
+      delay += 500;
     }
   },
 

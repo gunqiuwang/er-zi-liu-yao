@@ -1,4 +1,4 @@
-/* pages/settings/settings.wxss - 设定页面 */
+/* pages/settings/settings.wxss - 设定页面 v2 */
 
 .page {
   min-height: 100vh;
@@ -7,18 +7,19 @@
   flex-direction: column;
   padding: 0 48rpx;
   padding-top: env(safe-area-inset-top);
-  padding-bottom: 200rpx;
+  padding-bottom: 160rpx;
   box-sizing: border-box;
 }
 
 .page-header {
-  padding: 64rpx 0 48rpx 0;
+  padding: 72rpx 0 44rpx 0;
 }
 
 .page-title {
-  font-size: 40rpx;
+  font-size: 36rpx;
   color: #1C1C1C;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 2rpx;
 }
 
 .settings-list {
@@ -29,44 +30,45 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 32rpx 0;
+  padding: 28rpx 0;
   border-bottom: 1rpx solid #E8E6E0;
 }
 
 .setting-info {
   display: flex;
   flex-direction: column;
-  gap: 8rpx;
+  gap: 6rpx;
 }
 
 .setting-label {
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #1C1C1C;
 }
 
 .setting-desc {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #8B8B8B;
 }
 
 .setting-value {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #8B8B8B;
 }
 
-/* Toggle 开关 */
+/* Toggle */
 .toggle {
-  width: 96rpx;
-  height: 56rpx;
+  width: 88rpx;
+  height: 52rpx;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .toggle-track {
-  width: 96rpx;
-  height: 56rpx;
+  width: 88rpx;
+  height: 52rpx;
   background-color: #D0CCC2;
-  border-radius: 28rpx;
+  border-radius: 26rpx;
   padding: 4rpx;
   transition: background-color 0.3s ease;
 }
@@ -76,31 +78,32 @@
 }
 
 .toggle-thumb {
-  width: 48rpx;
-  height: 48rpx;
+  width: 44rpx;
+  height: 44rpx;
   background-color: #FFFFFF;
-  border-radius: 24rpx;
+  border-radius: 22rpx;
   transition: transform 0.3s ease;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
 }
 
 .toggle.on .toggle-thumb {
-  transform: translateX(40rpx);
+  transform: translateX(36rpx);
 }
 
 /* 字体选项 */
 .font-options {
   display: flex;
-  gap: 16rpx;
+  gap: 12rpx;
 }
 
 .font-option {
-  width: 80rpx;
-  height: 80rpx;
+  width: 72rpx;
+  height: 72rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2rpx solid #E8E6E0;
-  border-radius: 12rpx;
+  border: 1.5px solid #E0DDD5;
+  border-radius: 10rpx;
   transition: all 0.2s ease;
 }
 
@@ -115,15 +118,13 @@
 }
 
 .font-serif {
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #1C1C1C;
-  font-family: 'Songti SC', 'STSong', serif;
 }
 
 .font-sans {
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #1C1C1C;
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
 }
 
 /* 关于 */
@@ -131,19 +132,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64rpx 0;
-  gap: 8rpx;
+  padding: 56rpx 0;
+  gap: 6rpx;
 }
 
 .about-text {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #1C1C1C;
-  letter-spacing: 4rpx;
+  letter-spacing: 6rpx;
 }
 
 .about-version {
-  font-size: 20rpx;
-  color: #BDBDBD;
+  font-size: 18rpx;
+  color: #C0BCB4;
 }
 
 /* 底部导航 */
@@ -154,18 +155,21 @@
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 24rpx 64rpx;
-  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
-  background-color: #F7F4EE;
+  align-items: flex-end;
+  padding: 0 72rpx;
+  padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
+  background: transparent;
+  z-index: 50;
 }
 
 .nav-item {
-  width: 64rpx;
-  height: 64rpx;
+  width: 72rpx;
+  height: 72rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.5;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
 }
 
 .nav-item.active {
@@ -173,54 +177,64 @@
 }
 
 .calendar-icon {
-  width: 40rpx;
-  height: 40rpx;
-  border: 2rpx solid #1C1C1C;
-  border-radius: 8rpx;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
 }
 
 .calendar-icon::before {
   content: '';
   position: absolute;
-  top: -8rpx;
+  width: 38rpx;
+  height: 34rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 6rpx;
+  top: 4rpx;
+  left: 3rpx;
+  box-sizing: border-box;
+}
+
+.calendar-icon::after {
+  content: '';
+  position: absolute;
+  width: 10rpx;
+  height: 6rpx;
+  border: 1.5px solid #4A4A4A;
+  border-bottom: none;
+  border-radius: 3rpx 3rpx 0 0;
+  top: 0rpx;
   left: 50%;
   transform: translateX(-50%);
-  width: 20rpx;
-  height: 8rpx;
-  border: 2rpx solid #1C1C1C;
-  border-bottom: none;
-  border-radius: 4rpx 4rpx 0 0;
+  box-sizing: border-box;
 }
 
 .settings-icon {
-  width: 40rpx;
-  height: 40rpx;
-  border: 2rpx solid #1C1C1C;
-  border-radius: 50%;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
 }
 
 .settings-icon::before {
   content: '';
   position: absolute;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #4A4A4A;
+  border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 12rpx;
-  height: 12rpx;
-  background-color: #1C1C1C;
-  border-radius: 50%;
 }
 
 .settings-icon::after {
   content: '';
   position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 4rpx;
-  height: 16rpx;
-  background-color: #1C1C1C;
-  border-radius: 2rpx;
+  box-sizing: border-box;
 }

@@ -1,5 +1,6 @@
-/* pages/index/index.wxss - 东方极简风格 */
+/* pages/index/index.wxss - 东方极简风格 v2 */
 
+/* === 基础页面 === */
 .page {
   min-height: 100vh;
   background-color: #F7F4EE;
@@ -8,146 +9,187 @@
   align-items: center;
   padding: 0 48rpx;
   padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: 160rpx;
   box-sizing: border-box;
   position: relative;
 }
 
-/* 顶部日期区 */
+/* === 顶部日期区 === */
 .date-header {
   display: flex;
   align-items: center;
-  margin-top: 64rpx;
-  gap: 24rpx;
+  margin-top: 80rpx;
+  gap: 20rpx;
 }
 
 .lunar-date {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #8B8B8B;
-  letter-spacing: 4rpx;
+  letter-spacing: 6rpx;
   font-weight: 300;
 }
 
 .today-mark {
-  font-size: 20rpx;
+  font-size: 18rpx;
   color: #FFFFFF;
   background-color: #9F2D20;
-  padding: 6rpx 16rpx;
-  border-radius: 4rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 3rpx;
   letter-spacing: 2rpx;
+  opacity: 0.9;
 }
 
-/* 二字展示区 */
+/* === 二字展示区 === */
 .chars-section {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  min-height: 400rpx;
+  gap: 12rpx;
+  min-height: 360rpx;
 }
 
 .char-left, .char-right {
-  font-size: 48rpx;
-  color: #E0DDD5;
+  font-size: 44rpx;
+  color: #E8E4DC;
   font-weight: 200;
 }
 
 .chars {
-  font-size: 160rpx;
+  font-size: 144rpx;
   color: #1C1C1C;
   font-weight: 600;
-  letter-spacing: 24rpx;
-  transition: all 0.4s ease-out;
+  letter-spacing: 20rpx;
+  transition: all 0.5s ease-out;
 }
 
 .chars.empty {
-  color: #E0DDD5;
+  color: #E0DCD4;
 }
 
-/* 铜钱按钮 */
+/* === 铜钱按钮 === */
 .coin-section {
-  padding: 48rpx 0;
-}
-
-.coin {
-  width: 112rpx;
-  height: 112rpx;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #9B7B4F, #5B4630);
+  padding: 56rpx 0 48rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+}
+
+.coin {
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #A88B5A 0%,
+    #8B6F42 40%,
+    #6B5530 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.4s ease-out, opacity 0.3s ease;
+  cursor: pointer;
 }
 
 .coin::before {
   content: '';
   position: absolute;
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 50%;
+  border: 1rpx solid rgba(0, 0, 0, 0.06);
+  filter: blur(0.5px);
+}
+
+.coin::after {
+  content: '';
+  position: absolute;
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
-  border: 1rpx solid rgba(0, 0, 0, 0.04);
+  border: 1rpx solid rgba(0, 0, 0, 0.03);
+  opacity: 0.5;
 }
 
-.coin.rotating {
-  animation: coinRotate 0.6s ease-out;
+.coin.touched {
+  animation: coinTouch 0.5s ease-out;
 }
 
-@keyframes coinRotate {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(15deg); }
-  50% { transform: rotate(-10deg); }
-  75% { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
+@keyframes coinTouch {
+  0% { transform: rotate(0deg); opacity: 1; }
+  20% { transform: rotate(8deg); opacity: 0.85; }
+  40% { transform: rotate(-5deg); opacity: 0.9; }
+  60% { transform: rotate(3deg); opacity: 0.95; }
+  80% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); opacity: 1; }
 }
 
 .coin-hole {
-  width: 28rpx;
-  height: 28rpx;
+  width: 24rpx;
+  height: 24rpx;
   background-color: #F7F4EE;
   border-radius: 4rpx;
+  position: relative;
+  z-index: 1;
 }
 
-/* 分享按钮 */
+/* === 分享按钮 === */
 .share-section {
-  padding: 32rpx 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.share-section:active {
+  opacity: 0.7;
 }
 
 .share-icon {
-  width: 48rpx;
-  height: 48rpx;
-  border: 2rpx solid #8B8B8B;
-  border-radius: 50%;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
 }
 
 .share-icon::before {
   content: '';
   position: absolute;
-  top: -16rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2rpx;
-  height: 16rpx;
-  background-color: #8B8B8B;
+  width: 22rpx;
+  height: 22rpx;
+  border: 1.5px solid #6B6B6B;
+  border-radius: 2rpx;
+  transform: rotate(45deg);
+  top: 4rpx;
+  left: 4rpx;
 }
 
 .share-icon::after {
   content: '';
   position: absolute;
-  top: 4rpx;
-  left: 50%;
-  transform: translateX(-50%);
   width: 20rpx;
-  height: 20rpx;
-  border: 2rpx solid #8B8B8B;
-  border-radius: 50%;
+  height: 1.5px;
+  background-color: #6B6B6B;
+  transform: rotate(-45deg);
+  transform-origin: left center;
+  bottom: 8rpx;
+  left: 16rpx;
 }
 
-/* 底部导航 */
+/* 分享外围淡环 */
+.share-section::before {
+  content: '';
+  position: absolute;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  border: 1rpx solid rgba(0, 0, 0, 0.04);
+}
+
+/* === 底部导航 === */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -155,78 +197,171 @@
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 24rpx 64rpx;
-  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
-  background-color: #F7F4EE;
+  align-items: flex-end;
+  padding: 0 72rpx;
+  padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
+  background: transparent;
+  z-index: 50;
 }
 
 .nav-item {
-  width: 64rpx;
-  height: 64rpx;
+  width: 72rpx;
+  height: 72rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.5;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
 }
 
-.nav-item.active {
-  opacity: 1;
+.nav-item:active {
+  opacity: 0.65;
 }
 
+/* 日历 icon - iOS 风格线性 */
 .calendar-icon {
-  width: 40rpx;
-  height: 40rpx;
-  border: 2rpx solid #1C1C1C;
-  border-radius: 8rpx;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
 }
 
+/* 日历身体 */
 .calendar-icon::before {
   content: '';
   position: absolute;
-  top: -8rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20rpx;
-  height: 8rpx;
-  border: 2rpx solid #1C1C1C;
-  border-bottom: none;
-  border-radius: 4rpx 4rpx 0 0;
+  width: 38rpx;
+  height: 34rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 6rpx;
+  top: 4rpx;
+  left: 3rpx;
+  box-sizing: border-box;
 }
 
+/* 日历顶部提手 */
+.calendar-icon::after {
+  content: '';
+  position: absolute;
+  width: 10rpx;
+  height: 6rpx;
+  border: 1.5px solid #4A4A4A;
+  border-bottom: none;
+  border-radius: 3rpx 3rpx 0 0;
+  top: 0rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+/* 日历格 */
+.calendar-grid-lines {
+  position: absolute;
+  width: 38rpx;
+  height: 34rpx;
+  top: 4rpx;
+  left: 3rpx;
+}
+
+.calendar-grid-lines::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #4A4A4A;
+  top: 50%;
+  opacity: 0.3;
+}
+
+.calendar-grid-lines::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: #4A4A4A;
+  left: 50%;
+  opacity: 0.3;
+}
+
+/* 设置 icon - 极简齿轮 */
 .settings-icon {
-  width: 40rpx;
-  height: 40rpx;
-  border: 2rpx solid #1C1C1C;
-  border-radius: 50%;
+  width: 44rpx;
+  height: 44rpx;
   position: relative;
 }
 
 .settings-icon::before {
   content: '';
   position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 12rpx;
-  height: 12rpx;
-  background-color: #1C1C1C;
-  border-radius: 50%;
 }
 
 .settings-icon::after {
   content: '';
   position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  background:
+    radial-gradient(circle at 50% 0%, transparent 8rpx, #4A4A4A 8rpx, #4A4A4A 10rpx, transparent 10rpx)
+    0 0 / 10rpx 10rpx,
+    radial-gradient(circle at 100% 50%, transparent 8rpx, #4A4A4A 8rpx, #4A4A4A 10rpx, transparent 10rpx)
+    0 0 / 10rpx 10rpx,
+    radial-gradient(circle at 50% 100%, transparent 8rpx, #4A4A4A 8rpx, #4A4A4A 10rpx, transparent 10rpx)
+    0 0 / 10rpx 10rpx,
+    radial-gradient(circle at 0% 50%, transparent 8rpx, #4A4A4A 8rpx, #4A4A4A 10rpx, transparent 10rpx)
+    0 0 / 10rpx 10rpx;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 4rpx;
-  height: 16rpx;
-  background-color: #1C1C1C;
-  border-radius: 2rpx;
 }
 
-/* 输入弹窗 */
+/* 简化版齿轮用伪元素绘制 */
+.settings-icon {
+  background: transparent;
+}
+
+.settings-icon {
+  width: 44rpx;
+  height: 44rpx;
+  position: relative;
+}
+
+.settings-icon::before {
+  content: '';
+  position: absolute;
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #4A4A4A;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.settings-icon::after {
+  content: '';
+  position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  border: 1.5px solid #4A4A4A;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+/* 齿轮齿 - 使用 SVG 或伪元素简化表示 */
+.gear-tooth {
+  display: none;
+}
+
+/* === 输入弹窗 === */
 .input-modal {
   position: fixed;
   top: 0;
@@ -239,7 +374,7 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.35s ease-out;
 }
 
 .input-modal.show {
@@ -253,71 +388,82 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
 }
 
 .input-card {
   position: relative;
   z-index: 1;
-  width: 600rpx;
+  width: 560rpx;
   background-color: #F7F4EE;
-  border-radius: 24rpx;
-  padding: 48rpx;
+  border-radius: 20rpx;
+  padding: 48rpx 40rpx;
+  box-shadow: 0 8rpx 40rpx rgba(0, 0, 0, 0.08);
 }
 
 .input-header {
   text-align: center;
-  margin-bottom: 40rpx;
+  margin-bottom: 36rpx;
 }
 
 .input-title {
-  font-size: 32rpx;
+  font-size: 30rpx;
   color: #1C1C1C;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 2rpx;
 }
 
 .input-field {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  margin-bottom: 16rpx;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
 }
 
 .input-bracket {
-  font-size: 48rpx;
-  color: #D0CCC2;
+  font-size: 44rpx;
+  color: #D8D4CC;
   font-weight: 200;
 }
 
 .input-box {
-  width: 280rpx;
-  height: 120rpx;
+  width: 240rpx;
+  height: 100rpx;
   background-color: #FFFFFF;
-  border-radius: 16rpx;
-  font-size: 64rpx;
+  border-radius: 12rpx;
+  font-size: 56rpx;
   text-align: center;
-  letter-spacing: 16rpx;
+  letter-spacing: 12rpx;
+  border: none;
+  outline: none;
+}
+
+.input-box::placeholder {
+  color: #D8D4CC;
 }
 
 .input-hint {
   text-align: center;
-  font-size: 22rpx;
+  font-size: 20rpx;
   color: #BDBDBD;
-  margin-bottom: 40rpx;
+  margin-bottom: 32rpx;
 }
 
 .input-actions {
   display: flex;
-  gap: 16rpx;
+  gap: 12rpx;
 }
 
 .input-btn {
   flex: 1;
   text-align: center;
-  padding: 24rpx;
-  font-size: 28rpx;
-  border-radius: 12rpx;
+  padding: 22rpx;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  border: none;
+  cursor: pointer;
 }
 
 .input-btn.cancel {
@@ -330,7 +476,11 @@
   color: #F7F4EE;
 }
 
-/* 卦象展开面板 */
+.input-btn::after {
+  border: none;
+}
+
+/* === 卦象展开面板 === */
 .hexagram-panel {
   position: fixed;
   top: 0;
@@ -343,7 +493,7 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .hexagram-panel.show {
@@ -357,7 +507,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(247, 244, 238, 0.95);
+  background-color: rgba(247, 244, 238, 0.96);
+  backdrop-filter: blur(8px);
 }
 
 .hexagram-content {
@@ -366,49 +517,66 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64rpx;
+  padding: 80rpx 64rpx;
 }
 
 .hexagram-symbol {
-  font-size: 200rpx;
+  font-size: 180rpx;
   color: #1C1C1C;
-  margin-bottom: 32rpx;
+  margin-bottom: 24rpx;
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.85);
   transition: all 0.6s ease-out;
+  line-height: 1;
 }
 
 .hexagram-panel.show .hexagram-symbol {
   opacity: 1;
   transform: scale(1);
+  transition-delay: 0.2s;
 }
 
 .hexagram-name {
-  font-size: 64rpx;
+  font-size: 56rpx;
   color: #1C1C1C;
   font-weight: 600;
-  margin-bottom: 8rpx;
+  margin-bottom: 6rpx;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.hexagram-panel.show .hexagram-name {
+  opacity: 1;
+  transition-delay: 0.4s;
 }
 
 .hexagram-title {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #8B8B8B;
   margin-bottom: 48rpx;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.hexagram-panel.show .hexagram-title {
+  opacity: 1;
+  transition-delay: 0.5s;
 }
 
 .hexagram-lines {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
+  gap: 12rpx;
   margin-bottom: 48rpx;
+  align-items: center;
 }
 
 .line-item {
   display: flex;
   align-items: center;
-  gap: 24rpx;
+  gap: 20rpx;
   opacity: 0;
-  transform: translateY(20rpx);
+  transform: translateY(16rpx);
   transition: all 0.4s ease-out;
 }
 
@@ -418,54 +586,78 @@
 }
 
 .line-yao {
-  font-size: 24rpx;
-  color: #8B8B8B;
-  width: 48rpx;
+  font-size: 20rpx;
+  color: #9B9688;
+  width: 36rpx;
   text-align: right;
+  font-weight: 300;
 }
 
 .line-shape {
-  width: 120rpx;
-  height: 16rpx;
+  width: 100rpx;
+  height: 12rpx;
   display: flex;
   align-items: center;
 }
 
 .yang-line {
-  width: 120rpx;
-  height: 8rpx;
+  width: 100rpx;
+  height: 6rpx;
   background-color: #1C1C1C;
-  border-radius: 4rpx;
+  border-radius: 3rpx;
 }
 
 .yin-line {
-  width: 120rpx;
-  height: 8rpx;
-  background: linear-gradient(to right, #1C1C1C 0%, #1C1C1C 45%, transparent 45%, transparent 55%, #1C1C1C 55%, #1C1C1C 100%);
-  border-radius: 4rpx;
+  width: 100rpx;
+  height: 6rpx;
+  background: linear-gradient(
+    to right,
+    #1C1C1C 0%,
+    #1C1C1C 42%,
+    transparent 42%,
+    transparent 58%,
+    #1C1C1C 58%,
+    #1C1C1C 100%
+  );
+  border-radius: 3rpx;
 }
 
 .line-changing .yang-line,
 .line-changing .yin-line {
   background-color: #9F2D20;
+  opacity: 0.7;
 }
 
 .hexagram-text {
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #8B8B8B;
-  line-height: 1.8;
+  line-height: 1.9;
   text-align: center;
-  max-width: 500rpx;
+  max-width: 480rpx;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.hexagram-panel.show .hexagram-text {
+  opacity: 1;
+  transition-delay: 0.7s;
 }
 
 .close-hint {
-  margin-top: 64rpx;
-  font-size: 22rpx;
-  color: #BDBDBD;
-  letter-spacing: 2rpx;
+  margin-top: 80rpx;
+  font-size: 20rpx;
+  color: #C0BCB4;
+  letter-spacing: 3rpx;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
-/* 分享弹窗 */
+.hexagram-panel.show .close-hint {
+  opacity: 1;
+  transition-delay: 1s;
+}
+
+/* === 分享弹窗 === */
 .share-modal {
   position: fixed;
   top: 0;
@@ -493,100 +685,106 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
 
 .share-card {
-  width: 600rpx;
+  width: 540rpx;
   background-color: #F7F4EE;
-  padding: 64rpx 48rpx;
+  padding: 56rpx 48rpx;
   position: relative;
   z-index: 1;
+  box-shadow: 0 12rpx 48rpx rgba(0, 0, 0, 0.1);
 }
 
 .share-card-header {
   text-align: center;
-  margin-bottom: 48rpx;
+  margin-bottom: 40rpx;
 }
 
 .share-date {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #8B8B8B;
-  letter-spacing: 4rpx;
+  letter-spacing: 6rpx;
+  font-weight: 300;
 }
 
 .share-chars {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  margin-bottom: 48rpx;
+  gap: 12rpx;
+  margin-bottom: 36rpx;
 }
 
 .share-char-left, .share-char-right {
-  font-size: 36rpx;
-  color: #E0DDD5;
+  font-size: 32rpx;
+  color: #E0DCD4;
 }
 
 .share-char {
-  font-size: 80rpx;
+  font-size: 72rpx;
   color: #1C1C1C;
   font-weight: 600;
-  letter-spacing: 16rpx;
+  letter-spacing: 12rpx;
 }
 
 .share-hexagram-symbol {
   display: block;
   text-align: center;
-  font-size: 120rpx;
+  font-size: 100rpx;
   color: #1C1C1C;
-  margin-bottom: 16rpx;
+  margin-bottom: 12rpx;
+  line-height: 1;
 }
 
 .share-hexagram-title {
   display: block;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #1C1C1C;
-  margin-bottom: 32rpx;
+  margin-bottom: 28rpx;
+  font-weight: 500;
 }
 
 .share-hexagram-text {
   display: block;
   text-align: center;
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #8B8B8B;
   line-height: 1.8;
 }
 
 .share-card-footer {
-  margin-top: 48rpx;
+  margin-top: 40rpx;
   text-align: center;
 }
 
 .share-watermark {
-  font-size: 20rpx;
+  font-size: 18rpx;
   color: #D0CCC2;
-  letter-spacing: 4rpx;
+  letter-spacing: 6rpx;
 }
 
 .share-actions {
   position: relative;
   z-index: 1;
-  margin-top: 32rpx;
+  margin-top: 24rpx;
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
-  width: 600rpx;
+  gap: 12rpx;
+  width: 540rpx;
 }
 
 .share-btn {
   background-color: #1C1C1C;
   color: #F7F4EE;
-  font-size: 28rpx;
-  padding: 24rpx 48rpx;
+  font-size: 26rpx;
+  padding: 22rpx 48rpx;
   border-radius: 8rpx;
   border: none;
+  letter-spacing: 2rpx;
 }
 
 .share-btn.cancel {
